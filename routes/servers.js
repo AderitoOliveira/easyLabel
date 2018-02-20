@@ -58,7 +58,7 @@ fetchSingleClient = function(data, callback) {
 
 fetchAllClientProduct = function(data, callback) {
     con.connect(function(err) {
-    con.query('SELECT * FROM Client_Product', function(err, rows) {
+    con.query('SELECT * FROM client_product', function(err, rows) {
         if (err) {
             throw err;
         } else
