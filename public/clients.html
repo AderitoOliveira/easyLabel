@@ -1,0 +1,21 @@
+<div class="container">
+    <div ng-controller="clients">
+        <table id="products" class="table table-striped table-hover table-bordered">
+            <thead class="thead-dark">
+                <th>Número Ciente</th>
+                <th>Nome do cLiente</th>
+                <th>Morada </th>
+                <th>Número Fiscal</th>
+                <th>Número Telefone</th>
+            </thead>
+
+            <tr ng-repeat="client in data">
+                    <td>{{client.ClientID}}</td>
+                    <td>{{client.ClientName}}</td>
+                    <td>{{client.Address}}</td>
+                    <td>{{client.NIF}}</td>
+                    <td>{{client.PhoneNumber}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

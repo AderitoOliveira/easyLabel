@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="easyLabel">
+    <head>
+        <title>Integrating AngularJS with NodeJS</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+        <script src="javascripts/app.js" type="text/javascript"></script>  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>   
+        <!--script src="javascripts/dataTable.js"></script-->    
+
+        <!-- To remove the # from the URL in conjunct with the  $locationProvider.html5Mode(true);-->
+        <base href="/">
+
+    </head>
+    <body>
+
+        <ul class="nav nav-pills nav-stacked">
+            <li><p><a href="/">Main</a></p></li>
+            <li><a href="/listProducts">Listar Produtos</a></li>
+        </ul>
+
+        <div id="mainDiv">
+            <div ng-view></div>
+        </div>
+    </body>
+</html>

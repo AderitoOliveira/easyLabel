@@ -2,9 +2,15 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var serverMysql = require('./servers.js');
+var resize = require('./resize.js');
 
 //Get images from the public/images directory
 router.use('/images', express.static(__dirname+'/uploads/'));
+
+/* GET home page.  */
+router.get('/', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../', 'views', 'index.html'));
+});
  
 //Get All Clients
 router.get('/clients', function(req,res){
@@ -34,6 +40,13 @@ router.get('/products', function(req,res){
 //Get Single Product information
 router.get('/products/:id', function(req,res){
   fetchSingleProduct(req,res);  
+});
+
+//Insert Client
+router.post('/client', function(req,res){
+  console.log("INSERT NEW CLIENT");
+  console.log(req.body);
+  insertClient(req,res);  
 });
 
 module.exports = router;

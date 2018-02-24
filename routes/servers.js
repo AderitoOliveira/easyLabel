@@ -77,7 +77,7 @@ fetchAllClientProduct = function(data, callback) {
 
 fetchSingleClientProduct = function(data, callback) {
     con.connect(function(err) {
-    con.query('SELECT * FROM client_product where clientid=?', [data.params.id], function(err, rows) {
+    con.query('SELECT * FROM products WHERE productid in (select productid from client_product where clientid = ?)', [data.params.id], function(err, rows) {
         if (err) {
             throw err;
         } else
@@ -131,4 +131,18 @@ fetchSingleProduct = function(data, callback) {
         console.log("--------------------------------------------------");    
     });
 });
+}
+
+
+insertClient = function(req, res) {
+    var postData  = req.body;
+    console.log("##########################################################");
+    console.log(req.body);
+    console.log("##########################################################");
+    con.connect(function(err) {
+    con.query('INSERT INTO clients SET ?', postData, function (error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
+ });
 }

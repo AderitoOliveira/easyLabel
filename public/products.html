@@ -1,0 +1,27 @@
+<div class="container">
+    <div ng-controller="products">
+        <table id="products" class="table table-striped table-hover table-bordered">
+            <thead class="thead-dark">
+                <th>ProductID</th>
+                <th>ProductName</th>
+                <th>Image_Path</th>
+                <th>Image_Name</th>
+                <th>ZPL_String_To_Print</th>
+                <th>BAR_Code_Number</th>
+                <th>GS1_128</th>
+                <th>Quantity</th>
+            </thead>
+
+            <tr ng-repeat="product in data">
+                    <td>{{product.ProductID}}</td>
+                    <td>{{product.ProductName}}</td>
+                    <td>{{product.Image_Path}}</td>
+                    <td>{{product.Image_Name}}</td>
+                    <td>{{product.ZPL_String_To_Print}}</td>
+                    <td>{{product.BAR_Code_Number}}</td>
+                    <td>{{product.GS1_128}}</td>
+                    <td>{{product.Quantity}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
