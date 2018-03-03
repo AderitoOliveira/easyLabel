@@ -1,21 +1,32 @@
 <div class="container">
     <div ng-controller="clients">
-        <table id="products" class="table table-striped table-hover table-bordered">
+        <table ng-table="usersTable" id="products" class="table table-striped table-hover table-condensed">
             <thead class="thead-dark">
                 <th>Número Ciente</th>
-                <th>Nome do cLiente</th>
+                <th>Nome do Cliente</th>
                 <th>Morada </th>
                 <th>Número Fiscal</th>
                 <th>Número Telefone</th>
             </thead>
-
-            <tr ng-repeat="client in data">
+            <tbody>
+                <input type="text" name="Pesquisa" ng-model="searchChar" placeholder="Pesquisar">  
+                <tr dir-paginate="client in data | orderBy : 'ClientName' | filter:searchChar | itemsPerPage:4">
                     <td>{{client.ClientID}}</td>
                     <td>{{client.ClientName}}</td>
                     <td>{{client.Address}}</td>
                     <td>{{client.NIF}}</td>
                     <td>{{client.PhoneNumber}}</td>
-            </tr>
+                    <td><a class="btn btn-xs btn-warning" ng-click="removeRow(client.ClientID)"><i class="glyphicon glyphicon-pencil"></i></a></td>
+                    <td><a class="btn btn-xs btn-danger" ng-click="removeRow(client.ClientID)"><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+            </tbody>
         </table>
+        <div align="center">
+                <dir-pagination-controls
+                     max-size="100"
+                     direction-links="true"
+                     boundary-links="true" >
+                </dir-pagination-controls>
+         </div>
     </div>
 </div>

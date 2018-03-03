@@ -1,4 +1,4 @@
-var app = angular.module('easyLabel',['ngRoute']);
+var app = angular.module('easyLabel',['ngRoute', 'ui.bootstrap','angularUtils.directives.dirPagination']);
 
 app.config(function($routeProvider, $locationProvider) {
 
@@ -20,7 +20,7 @@ app.controller('clients', function($scope, $http) {
     $scope.data = [];
     var request = $http.get('/clients');    
     request.then(function successCallback(response) {
-        $scope.data = response.data;
+        $scope.data  = response.data;
         return  $scope.data; 
     },
     function errorCallback(data){
@@ -38,5 +38,12 @@ app.controller('products', function($scope, $http) {
     function errorCallback(data){
         console.log('Error: ' + data);
     });
+
+    $scope.removeRow = function (product, product2) {
+        //var i = $scope.users[idx];
+        console.log('value2 i:' + product);
+        console.log('value2 i:' + product2);
+        alert("Clicked!!!!");
+    }
 });
 

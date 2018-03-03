@@ -4,5 +4,51 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: rgb(236, 33, 33);
+}
+
+.sidenav {
+  height: 100%;
+  width: 100px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #818181;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.navbar {
+  color: #818181;
+}
+.sidenav a {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #cc2929;
+}
+
+.main {
+  margin-left: 150px; /* Same as the width of the sidenav */
+}
+
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
+}
+
+.mainDiv {
+  padding-top: 15px;
+  border: 2px solid rgba(133, 128, 202, 0.329);
+}
+
+input {
+  border: 2px solid rgba(12, 131, 179, 0.932);
+  border-radius: 4px;
 }

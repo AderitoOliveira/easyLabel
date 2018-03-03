@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var serverMysql = require('./servers.js');
+var resize = require('./resize.js');
 
 //Get images from the public/images directory
 router.use('/images', express.static(__dirname+'/uploads/'));
