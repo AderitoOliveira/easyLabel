@@ -1,11 +1,11 @@
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
-  host: process.env.EASYLABELDB_SERVICE_HOST,
-  user: 'easylabeldb',
-  password: 'easylabeldb',
-  database: 'easylabeldb',
-  port: process.env.EASYLABELDB_SERVICE_PORT_MYSQL
+  host: '127.0.0.1',
+  user: 'easylabel',
+  password: 'easylabel',
+  database: 'easylabel',
+  port: '3306'
 });
 
 //var con = mysql.createConnection({
@@ -141,6 +141,19 @@ insertClient = function(req, res) {
     console.log("##########################################################");
     con.connect(function(err) {
     con.query('INSERT INTO clients SET ?', postData, function (error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
+ });
+}
+
+insertPrintedLables = function(req, res) {
+    var postData  = req.body;
+    console.log("##########################################################");
+    console.log(req.body);
+    console.log("##########################################################");
+    con.connect(function(err) {
+    con.query('INSERT INTO printed_labels SET ?', postData, function (error, results, fields) {
     if (error) throw error;
     res.end(JSON.stringify(results));
   });

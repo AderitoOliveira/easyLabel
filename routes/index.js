@@ -3,7 +3,6 @@ var router = express.Router();
 var path = require('path');
 var serverMysql = require('./servers.js');
 
-
 //Get images from the public/images directory
 router.use('/images', express.static(__dirname+'/uploads/'));
 
@@ -47,6 +46,13 @@ router.post('/client', function(req,res){
   console.log("INSERT NEW CLIENT");
   console.log(req.body);
   insertClient(req,res);  
+});
+
+//Insert Client
+router.post('/printedlabels', function(req,res){
+  console.log("INSERT PRINTED LABELS");
+  console.log(req.body);
+  insertPrintedLables(req,res);  
 });
 
 module.exports = router;
