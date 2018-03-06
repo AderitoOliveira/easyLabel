@@ -1,11 +1,11 @@
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'easylabel',
-  password: 'easylabel',
-  database: 'easylabel',
-  port: '3306'
+  host: process.env.EASYLABELDB_SERVICE_HOST,
+  user: 'easylabeldb',
+  password: 'easylabeldb',
+  database: 'easylabeldb',
+  port: process.env.EASYLABELDB_SERVICE_PORT_MYSQL
 });
 
 //var con = mysql.createConnection({
