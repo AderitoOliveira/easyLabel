@@ -136,6 +136,9 @@ fetchSingleProduct = function(data, callback) {
 
 insertClient = function(req, res) {
     var postData  = req.body;
+	callback.setHeader('Content-Type', 'application/json');
+    callback.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    callback.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
     console.log("##########################################################");
     console.log(req.body);
     console.log("##########################################################");
@@ -149,6 +152,9 @@ insertClient = function(req, res) {
 
 insertPrintedLables = function(req, res) {
     var postData  = req.body;
+	callback.setHeader('Content-Type', 'application/json');
+	callback.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+	callback.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
     console.log("##########################################################");
     console.log(req.body);
     console.log("##########################################################");
