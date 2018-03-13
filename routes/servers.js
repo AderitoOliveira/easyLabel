@@ -1,11 +1,11 @@
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
-  host: process.env.EASYLABELDB_SERVICE_HOST,
-  user: 'easylabeldb',
-  password: 'easylabeldb',
-  database: 'easylabeldb',
-  port: process.env.EASYLABELDB_SERVICE_PORT_MYSQL
+  host: '127.0.0.1',
+  user: 'easylabel',
+  password: 'easylabel',
+  database: 'easylabel',
+  port: '3306'
 });
 
 //var con = mysql.createConnection({
@@ -133,13 +133,12 @@ fetchSingleProduct = function(data, callback) {
 });
 }
 
-
+//INSERT CLIENT
 insertClient = function(req, res) {
     var postData  = req.body;
-	callback.setHeader('Content-Type', 'application/json');
-    callback.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    callback.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
-    callback.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
     console.log("##########################################################");
     console.log(req.body);
     console.log("##########################################################");
@@ -151,17 +150,36 @@ insertClient = function(req, res) {
  });
 }
 
+//INSERT PRINTED LABELS
 insertPrintedLables = function(req, res) {
     var postData  = req.body;
-	callback.setHeader('Content-Type', 'application/json');
-    callback.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    callback.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
-    callback.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
     console.log("##########################################################");
     console.log(req.body);
     console.log("##########################################################");
     con.connect(function(err) {
     con.query('INSERT INTO printed_labels SET ?', postData, function (error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
+ });
+}
+
+
+ //UPDATE PRODUCT
+ updateProduct = function(req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
+    console.log(req.body);
+    console.log("##########################################################");
+    console.log("IMAGE_NAME ------> " + req.body.imagename);
+    con.connect(function(err) {
+    con.query('UPDATE products SET ProductName = ?, Image_Name = ?, BAR_Code_Number = ? where ProductID = ?',  [req.body.productname, req.body.imagename, req.body.barcode, req.body.productid], function (error, results, fields) {
     if (error) throw error;
     res.end(JSON.stringify(results));
   });
